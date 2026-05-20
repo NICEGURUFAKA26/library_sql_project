@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">CREATE TABLE readers (</p>
+<p class="p1"><span class="Apple-converted-space">    </span>reader_num INT AUTO_INCREMENT,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>reader_name VARCHAR(100),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>reader_adress VARCHAR(100),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>reader_phone VARCHAR(30) NOT NULL,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>PRIMARY KEY (reader_num)</p>
+<p class="p1">);</p>
+<p class="p2"><br></p>
+<p class="p1">CREATE TABLE books (</p>
+<p class="p1"><span class="Apple-converted-space">    </span>book_num INT AUTO_INCREMENT,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>book_author VARCHAR(100),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>book_name VARCHAR(100),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>book_count INT NOT NULL DEFAULT 0,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>PRIMARY KEY (book_num)</p>
+<p class="p1">);</p>
+<p class="p2"><br></p>
+<p class="p1">CREATE TABLE books_in_use (</p>
+<p class="p1"><span class="Apple-converted-space">    </span>reader_num INT,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>book_num INT,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>issue_date DATE,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return_date DATE,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>fine_amount DECIMAL(10,2) NOT NULL DEFAULT 0,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>PRIMARY KEY (reader_num, book_num, issue_date),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>FOREIGN KEY (book_num) REFERENCES books(book_num),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>FOREIGN KEY (reader_num) REFERENCES readers(reader_num)</p>
+<p class="p1">);</p>
+</body>
+</html>
